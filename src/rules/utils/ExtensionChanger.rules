@@ -1,0 +1,23 @@
+"""
+@version: 0.1
+@author: Jetse
+@attention: Untested!
+
+The default extensions are: .fasta and .fastq, a symlink is created to the original file with the new extension
+fasta files could have extensions: .fa, .fna
+fastq files could have extensions: .fq
+"""
+rule faToFasta:
+    input: "{prefix}.fa"
+    output: "{prefix}.fasta"
+    shell: "ln -s {input[0]} {output[0]}"
+    
+rule fnaToFasta:
+    input: "{prefix}.fna"
+    output: "{prefix}.fasta"
+    shell: "ln -s {input[0]} {output[0]}"
+    
+rule fqToFastq:
+    input: "raw_reads/{prefix}.fq"
+    output: "raw_reads/{prefix}.fastq"
+    shell: "ln -s {input[0]} {output[0]}"

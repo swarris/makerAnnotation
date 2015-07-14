@@ -1,0 +1,133 @@
+{
+	"base":
+	{
+		"working_dir": "{base_dir}TEMP_MAKER",
+		"maker_bashrc": "{base_dir}{executables}maker.bashrc",
+		"download_dir":"{download_dir}",
+		"maker_perl": "{base_dir}bin/maker/src/",
+		"perl_brew" : "{home_dir}perl5/perlbrew/",
+		"perl_install": "{home_dir}perl5/perlbrew/perls/perl-5.18.0/",
+		"perl_version": "5.18.0",
+		"perl_cpanm_options" : "--force --notest ",
+		"perl_brew_options" : "-j 6 --notest --noman --thread --force ",
+		"perl_libs":
+		[
+			"forks",
+			"BioPerl",
+			"DBI",
+			"Error",
+			"Error::Simple",
+			"File::NFSLock",
+			"File::Which",
+			"Inline",
+			"Perl::Unsafe::Signals",
+			"Proc::Simple",
+			"URI::Escape",
+			"Bit::Vector",
+			"Inline::C",
+			"PerlIO::gzip",
+			"forks",
+			"forks::shared",
+			"IO::All",
+			"IO::Prompt",
+			"DBD::SQLite",
+			"LWP::Simple"
+		]
+	},
+
+	"output":
+	{
+		"protein_prefix": "PRI_"
+	},
+
+	"maker_opts":
+	{
+		"genome": "{base_dir}{executables}maker/data/dpp_contig.fasta",
+		"organism_type": "eukaryotic",
+		"est": "{base_dir}{executables}maker/data/dpp_est.fasta",
+		"rmlib" : "{base_dir}{executables}repeatmasker/repeat_db.fa",
+		"rmlib_genome" : "{base_dir}{executables}maker/data/dpp_contig.fasta",
+		"protein": "{base_dir}{executables}maker/data/dpp_protein.fasta",
+		"repeat_protein": "{base_dir}{executables}maker/data/te_proteins.fasta",
+		"model_org": "",
+		"snaphmm": "{base_dir}{executables}snap/HMM/D.melanogaster.hmm",
+		"augustus_species": "fly",
+		"est2genome": "1",
+		"protein2genome": "1",
+		"cpus": "8"
+	},
+
+	"maker_bopts":
+	{
+		"blast_type": "ncbi+"
+	},
+
+	"executables":
+	{
+		"rmblast": "{base_dir}{executables}rmblast/bin/rmblastn",
+		"makeblastdb": "{base_dir}{executables}blast_plus/bin/makeblastdb",
+		"blastn": "{base_dir}{executables}blast_plus/bin/blastn",
+		"blastp": "{base_dir}{executables}blast_plus/bin/blastp",
+		"blastx": "{base_dir}{executables}blast_plus/bin/blastx",
+		"tblastx": "{base_dir}{executables}blast_plus/bin/tblastx",
+		"RepeatMasker": "{base_dir}{executables}repeatmasker/RepeatMasker",
+		"repeatscout": "{base_dir}{executables}repeatscout/",
+		"repeatmodeler": "{base_dir}{executables}repeatmodeler/",
+		"exonerate": "{base_dir}{executables}exonerate/bin/exonerate",
+		"snap": "{base_dir}{executables}snap/snap",
+		"augustus": "{base_dir}{executables}augustus/bin/augustus",
+		"trf": "{base_dir}{executables}trf/trf",
+		"repbase": "{base_dir}{executables}repbase/",
+		"maker": "{base_dir}{executables}maker/bin/maker",
+		"perl" : "{home_dir}perl5/perlbrew/perls/perl-5.18.0/bin/perl",
+		"recon" : "{base_dir}{executables}recon/bin",
+		"cpanm" : "{home_dir}perl5/perlbrew/bin/cpanm"
+	},
+
+	"executable_sources":
+	{
+		"maker_URL": "{web_host}maker-2.31.6.tgz",
+		"version": "2.31.6",
+		"wget_options": " -c --proxy=off ",
+		"augustus_URL": "http://bioinf.uni-greifswald.de/augustus/binaries/augustus-3.0.3.tar.gz",
+		"exonerate_URL": "http://www.ebi.ac.uk/~guy/exonerate/exonerate-2.2.0-x86_64.tar.gz",
+		"snap_URL": "http://korflab.ucdavis.edu/Software/snap-2013-11-29.tar.gz",
+		"trf_URL": "http://tandem.bu.edu/trf/downloads/trf407b.linux64",
+		"blast+_URL": "ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/2.2.29/ncbi-blast-2.2.29+-x64-linux.tar.gz",
+		"rmblast_URL": "ftp://ftp.ncbi.nlm.nih.gov/blast/executables/rmblast/2.2.28/ncbi-rmblastn-2.2.28-x64-linux.tar.gz ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/2.2.28/ncbi-blast-2.2.28+-x64-linux.tar.gz",
+		"repeatmasker_URL": "http://www.repeatmasker.org/RepeatMasker-open-4-0-5.tar.gz",
+		"repeatmaskerlibraries_URL": "http://assembly.ab.wurnet.nl/~jvh/repbase/repeatmaskerlibraries-20140131.tar.gz",
+		"repeatmaskerlibraries_URL_org": "http://www.girinst.org/server/RepBase/protected/repeatmaskerlibraries/repeatmaskerlibraries-20140131.tar.gz",
+		"repeatmaskerlibraries_URL_netrc": "{home_dir}/.netrc",
+ 		"recon_URL": "http://www.repeatmasker.org/RECON-1.08.tar.gz",
+		"repeatscout_URL": "http://repeatscout.bioprojects.org/RepeatScout-1.0.5.tar.gz",
+		"repeatmodeler_URL": "http://www.repeatmasker.org/RepeatModeler-open-1-0-8.tar.gz",
+		"perl_URL": "http://downloads.activestate.com/ActivePerl/releases/5.18.4.1803/ActivePerl-5.18.4.1803-x86_64-linux-glibc-2.5-298573.tar.gz"
+	},
+
+	"jbrowse_installation":
+	{
+		"jbrowse_url": "{web_host}JBrowse-1.11.5.zip",
+		"interproscan_url": "{web_host}interproscan-5.7-48.0-64-bit.tar.gz",
+		"panther_url": "{web_host}panther-data-9.0.tar.gz",
+		"lookup_service_url": "{web_host}lookup_service_5.6-48.0.tar.gz"
+	},
+
+	"jbrowse_installation_production":
+	{
+		"jbrowse_url": "http://jbrowse.org/releases/JBrowse-1.11.5.zip",
+		"interproscan_url": "ftp://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/5.7-48.0/interproscan-5.7-48.0-64-bit.tar.gz",
+		"panther_url": "ftp://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/data/panther-data-9.0.tar.gz",
+		"lookup_service_url": "ftp://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/lookup_service/lookup_service_5.6-48.0.tar.gz"
+	},
+
+	"functional_annotation":
+	{
+		"uniprot": "{base_dir}{databases}/uniprot",
+		"uniprot_url": "ftp://ftp.uniprot.org/pub/databases/uniprot/current_release/uniref/",
+		"uniprot_db": "uniref50",
+		"interproscan": "{base_dir}{executables}interproscan/interproscan-5.8-49.0",
+		"interproscan_url": "ftp://ftp.ebi.ac.uk/pub/databases/interpro/iprscan/5/5.8-49.0/interproscan-5.8-49.0-64-bit.tar.gz",
+		"panther_url" : "ftp://ftp.ebi.ac.uk/pub/software/unix/iprscan/5/data/panther-data-9.0.tar.gz"
+	}
+}

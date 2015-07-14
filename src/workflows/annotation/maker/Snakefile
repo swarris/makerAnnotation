@@ -1,0 +1,57 @@
+"""
+Run the maker annotation pipeline
+"""
+
+import json, os, inspect
+import configparser
+import io
+
+# Get lib configuration
+# Set PYTHONPATH before running Snakemake :
+# export PYTHONPATH=$PYTHONPATH:/home/haars001/scratch/projects/VLPB/
+from makerAnnotation import VLPB_LIB_PATH
+
+ruleDir = VLPB_LIB_PATH + "rules/"
+
+
+
+"""
+Recursive function to do a string format on each of the string values in the config.
+    Full replace on a JSON does not work: it uses '{}' for formatting, which results
+    in errors.
+"""
+def replace_paths_in_json(conf, paths):
+    for item in conf:
+        if isinstance(conf[item], str): #is it a string value?
+            conf[item] = conf[item].format(**paths) #use json to replace values
+        elif isinstance(conf[item], dict): # is this a json object (dict) ?
+            replace_paths_in_json(conf[item], paths) # parse object
+
+# Get the config file:
+with open("config.json") as conf:
+    with open("paths.json") as paths:
+        PATHS = json.load(paths)
+        CONFIG = json.load(conf)
+        replace_paths_in_json(CONFIG, PATHS)
+
+
+# Include necessary rules
+include: ruleDir + "/annotation/Maker.rules"
+""" maker doesn't give proper output, so we need our own flag file"""
+rule all:
+    input:
+        CONFIG['base']['maker_bashrc'], # Needs to be separate defined always !
+        rules.install_perl_libs.output
+        ,rules.maker_installation.output
+        ,rules.maker.output
+        ,rules.get_predicted_proteins.output
+        ,rules.concatenate_gffs.output
+        ,rules.interproscan.output
+        ,rules.uniprot.output
+#rule all:
+#    input:
+#       expand("{working_dir}/maker_done.txt", working_dir=working_dir),
+#       expand("{working_dir}/predicted_proteins.faa", working_dir=working_dir),
+#       expand("{working_dir}/concatenated.gff", working_dir=working_dir)
+#       expand("{working_dir}/gffs_renamed.txt", working_dir=working_dir)
+#       expand("{working_dir}/uniprot", working_dir=working_dir)

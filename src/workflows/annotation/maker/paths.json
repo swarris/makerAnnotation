@@ -1,0 +1,8 @@
+{
+	"base_dir": "/tmp/",
+	"executables": "bin/maker_helpers/",
+	"databases":"databases/",
+	"web_host":"http://assembly.ab.wurnet.nl/~jvh/",
+	"home_dir":"/home/sven/",
+	"download_dir":"/tmp/"
+}

@@ -1,0 +1,70 @@
+{
+	"maxMem":{
+		"type": "number",
+		"description ": "The maximum memory to use (kb), used for the WGS assembler memory calculations only",
+		"required": true
+	},
+	"kmerSize":{
+		"type": "number",
+		"description ": "The kmer size to use in some preprocessing steps and in some assemblers",
+		"required": true
+	},
+	"illuminaAdapters":{
+		"type": "string",
+		"description ": "Path to the illumina adapter file in fasta format",
+		"required": true
+	},
+	"kmerSize":{
+		"type": "number",
+		"description ": "The kmer size to use in some preprocessing steps and in some assemblers",
+		"required": true
+	},
+	"libraries":{
+		"reads": {
+			"type": "array",
+			"description ": "Path to the illumina reads in fasta format, one forward, may contain a reversed",
+			"required": true
+		},
+		"type":{
+			"type": "(mp|pe|u)",
+			"description ": "The type of data, mp for matepair, pe for paired end, u for unpaired",
+			"required": true
+		},
+		"insertSize":{
+			"type": "number",
+			"description ": "The insert size of this library, only required if type is mp or pe",
+			"required": true
+		},
+		"insertSizeSd":{
+			"type": "number",
+			"description ": "The standard deviation of the insert size of this library, only required if type is mp or pe",
+			"required": true
+		},
+		"readlen":{
+			"type": "number",
+			"description ": "The sequence length of the reads",
+			"required": true
+		},
+		"platform" :{
+			"type": {"enum": ["illumina","pacbio","454"]},
+			"description ": "The sequencing platform of the assembler reads of this library",
+			"required": true
+		}
+	},
+	"options":{
+		"fastqMcf":{
+			"dupLen":{
+				"type": "number",
+				"description ": "The minimum number of overlapping bases starting at the front",
+				"required": true
+			},
+			"optionalOptions":{
+				"additionalProperties": true
+				}
+		},
+		"trimmomatic":{
+			"TODO": "describe required arguments",
+			"additionalProperties": true
+		}
+	}
+}
